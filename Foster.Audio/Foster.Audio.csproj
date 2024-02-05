@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Title>Foster.Audio</Title>
+    <Product>Foster.Audio</Product>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Christian Alonso-Daubney</Authors>
+    <Description>A small game audio library</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/MrBrixican/Foster.Audio</RepositoryUrl>
+    <PackageId>FosterAudio</PackageId>
+    <PackageProjectUrl>https://github.com/MrBrixican/Foster.Audio</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageOutputPath>$(SolutionDir)artifacts/</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NativeLibsDir>$(ProjectDir)..\Platform\libs\</NativeLibsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="$(NativeLibsDir)x64\FosterAudioPlatform.dll">
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Windows'))">PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>runtimes\win-x64\native</PackagePath>
+      <Pack>True</Pack>
+      <Link>FosterAudioPlatform.dll</Link>
+    </Content>
+    <Content Include="$(NativeLibsDir)lib64\libFosterAudioPlatform.so">
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Linux'))">PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>runtimes\linux-x64\native</PackagePath>
+      <Pack>True</Pack>
+      <Link>libFosterAudioPlatform.so</Link>
+    </Content>
+    <Content Include="$(NativeLibsDir)osx\libFosterAudioPlatform.dylib">
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('OSX'))">PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>runtimes\osx\native</PackagePath>
+      <Pack>True</Pack>
+      <Link>libFosterAudioPlatform.dylib</Link>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(ProjectDir)..\LICENSE" Pack="true" PackagePath="/"/>
+    <None Include="$(ProjectDir)..\README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+</Project>
