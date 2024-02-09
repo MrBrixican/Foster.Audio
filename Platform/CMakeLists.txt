@@ -43,7 +43,7 @@ if (UNIX AND NOT APPLE)
    if (LIB_M)
        target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_M})
    endif()
-   if (CMAKE_SYSTEM_NAME STREQUAL "Linux")=
+   if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
        target_link_libraries(${TARGET_NAME} PRIVATE ${CMAKE_DL_LIBS})
    endif ()
 endif ()
