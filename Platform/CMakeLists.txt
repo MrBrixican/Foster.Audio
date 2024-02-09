@@ -32,18 +32,20 @@ target_include_directories(${TARGET_NAME}
 # miniaudio dependencies
 # windows: none
 # mac: none
-# linux: pthreads, libm, libdl
-# bsd: pthreads, libm
+# linux: -lpthread, -lm, -ldl
+# bsd: -lpthread, -lm
 
 if (UNIX AND NOT APPLE)
    set(THREADS_PREFER_PTHREAD_FLAG ON)
    find_package(Threads REQUIRED)
-   find_library(LIB_M m)
-   if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-       find_library(LIB_DL dl)
-       target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_DL})
-   endif ()
    target_link_libraries(${TARGET_NAME} PRIVATE Threads::Threads ${LIB_M})
+   find_library(LIB_M m)
+   if (LIB_M)
+       target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_M})
+   endif()
+   if (CMAKE_SYSTEM_NAME STREQUAL "Linux")=
+       target_link_libraries(${TARGET_NAME} PRIVATE ${CMAKE_DL_LIBS})
+   endif ()
 endif ()
 
 # Get platform target
