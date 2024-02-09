@@ -2,7 +2,6 @@
 #define FOSTER_INTERNAL_H
 
 #include "foster_platform.h"
-#include "foster_audio.h"
 #include "third_party/miniaudio.h"
 
 // foster global state

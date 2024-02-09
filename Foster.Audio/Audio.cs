@@ -89,8 +89,9 @@ public static class Audio
 		}
 	}
 
-	internal static void Initialize()
+	public static void Startup()
 	{
+		Platform.FosterAudioStartup(new());
 		Channels = Platform.FosterAudioGetChannels();
 		SampleRate = Platform.FosterAudioGetSampleRate();
 		Listeners = Enumerable.Range(0, Platform.FosterAudioGetListenerCount())
@@ -100,7 +101,7 @@ public static class Audio
 		Listener = Listeners[0];
 	}
 
-	internal static void Step()
+	public static void Update()
 	{
 		// Go through all instances and destroy all that are non-protected, finished
 		for (int i = 0;i<instances.Count;i++)
@@ -124,13 +125,14 @@ public static class Audio
 		}
 	}
 
-	internal static void Shutdown()
+	public static void Shutdown()
 	{
 		ReleaseAll();
 		lock (instances)
 		{
 			instances.Clear();
 		}
+		Platform.FosterAudioShutdown();
 	}
 
 	internal static void OnSoundInstanceCreate(SoundInstance instance)

@@ -82,9 +82,9 @@ typedef struct FosterSoundCone
 extern "C" {
 #endif
 
-FOSTER_API void FosterStartup(FosterDesc desc);
+FOSTER_API void FosterAudioStartup(FosterDesc desc);
 
-FOSTER_API void FosterShutdown();
+FOSTER_API void FosterAudioShutdown();
 
 FOSTER_API float FosterAudioGetVolume();
 

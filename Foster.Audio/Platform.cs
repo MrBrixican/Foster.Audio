@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Foster.Audio;
 
-public static class Platform
+internal static class Platform
 {
 	public const string DLL = "FosterAudioPlatform";
 
@@ -28,9 +28,9 @@ public static class Platform
 	}
 
 	[DllImport(DLL)]
-	public static extern void FosterStartup(FosterDesc desc);
+	public static extern void FosterAudioStartup(FosterDesc desc);
 	[DllImport(DLL)]
-	public static extern void FosterShutdown();
+	public static extern void FosterAudioShutdown();
 	[DllImport(DLL)]
 	public static extern float FosterAudioGetVolume();
 	[DllImport(DLL)]

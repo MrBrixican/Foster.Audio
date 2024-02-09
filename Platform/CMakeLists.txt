@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(FosterAudioPlatform C)
 
-# Set flag for building a universal binary on macOS 
+# Set flag for building a universal binary on macOS
 if(APPLE)
 	set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 endif()
@@ -17,7 +17,6 @@ set (TARGET_NAME FosterAudioPlatform)
 add_library(${TARGET_NAME} SHARED
 	include/foster_platform.h
 	src/foster_platform.c
-	src/foster_audio.c
 )
 
 target_include_directories(${TARGET_NAME} SYSTEM

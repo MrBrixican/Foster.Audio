@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foster.Audio", "Foster.Audio\Foster.Audio.csproj", "{0DE61728-C4E1-4798-864C-46823EFF2274}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E80A4377-6170-489F-8D29-760D98AB7793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioVisualizer", "Samples\AudioVisualizer\AudioVisualizer.csproj", "{F0A2342E-893D-4BB4-A2CC-78720754CD8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{0DE61728-C4E1-4798-864C-46823EFF2274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE61728-C4E1-4798-864C-46823EFF2274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE61728-C4E1-4798-864C-46823EFF2274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A2342E-893D-4BB4-A2CC-78720754CD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A2342E-893D-4BB4-A2CC-78720754CD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A2342E-893D-4BB4-A2CC-78720754CD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A2342E-893D-4BB4-A2CC-78720754CD8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0A2342E-893D-4BB4-A2CC-78720754CD8B} = {E80A4377-6170-489F-8D29-760D98AB7793}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE3B335B-C9A8-412D-BF50-B2FB40C9788E}
