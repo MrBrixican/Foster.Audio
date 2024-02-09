@@ -323,12 +323,12 @@ void FosterAudioUnregisterData(const char *name)
 
 // begin AudioListener
 
-bool FosterAudioListenerGetEnabled(int index)
+FosterBool FosterAudioListenerGetEnabled(int index)
 {
 	return ma_engine_listener_is_enabled(fstate.audioEngine, index);
 }
 
-void FosterAudioListenerSetEnabled(int index, bool value)
+void FosterAudioListenerSetEnabled(int index, FosterBool value)
 {
 	ma_engine_listener_set_enabled(fstate.audioEngine, index, value);
 }
@@ -450,12 +450,12 @@ void FosterSoundSetPan(FosterSound *sound, float value)
 	ma_sound_set_pan((ma_sound *)sound, value);
 }
 
-bool FosterSoundGetPlaying(FosterSound *sound)
+FosterBool FosterSoundGetPlaying(FosterSound *sound)
 {
 	return ma_sound_is_playing((ma_sound *)sound);
 }
 
-bool FosterSoundGetFinished(FosterSound *sound)
+FosterBool FosterSoundGetFinished(FosterSound *sound)
 {
 	return ma_sound_at_end((ma_sound *)sound);
 }
@@ -484,12 +484,12 @@ void FosterSoundSetCursorPcmFrames(FosterSound *sound, uint64_t value)
 	ma_sound_seek_to_pcm_frame((ma_sound *)sound, value);
 }
 
-bool FosterSoundGetLooping(FosterSound *sound)
+FosterBool FosterSoundGetLooping(FosterSound *sound)
 {
 	return ma_sound_is_looping((ma_sound *)sound);
 }
 
-void FosterSoundSetLooping(FosterSound *sound, bool value)
+void FosterSoundSetLooping(FosterSound *sound, FosterBool value)
 {
 	ma_sound_set_looping((ma_sound *)sound, value);
 }
@@ -522,12 +522,12 @@ void FosterSoundSetLoopEndPcmFrames(FosterSound *sound, uint64_t value)
 	ma_data_source_set_loop_point_in_pcm_frames(source, FosterSoundGetLoopBeginPcmFrames(sound), value);
 }
 
-bool FosterSoundGetSpatialized(FosterSound *sound)
+FosterBool FosterSoundGetSpatialized(FosterSound *sound)
 {
 	return ma_sound_group_is_spatialization_enabled((ma_sound *)sound);
 }
 
-void FosterSoundSetSpatialized(FosterSound *sound, bool value)
+void FosterSoundSetSpatialized(FosterSound *sound, FosterBool value)
 {
 	ma_sound_group_set_spatialization_enabled((ma_sound *)sound, value);
 }

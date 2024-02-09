@@ -19,6 +19,19 @@ internal static class Platform
 		public int logging;
 	}
 
+	public struct FosterBool
+	{
+		byte value;
+
+		public FosterBool(byte v)
+		{
+			value = v;
+		}
+
+		public static implicit operator bool(FosterBool b) => b.value != 0;
+		public static implicit operator FosterBool(bool b) => new(b ? (byte)1 : (byte)0);
+	}
+
 	[Flags]
 	public enum FosterSoundFlags
 	{
@@ -57,9 +70,9 @@ internal static class Platform
 	public static extern void FosterAudioUnregisterData(string name);
 
 	[DllImport(DLL)]
-	public static extern bool FosterAudioListenerGetEnabled(int index);
+	public static extern FosterBool FosterAudioListenerGetEnabled(int index);
 	[DllImport(DLL)]
-	public static extern void FosterAudioListenerSetEnabled(int index, bool value);
+	public static extern void FosterAudioListenerSetEnabled(int index, FosterBool value);
 	[DllImport(DLL)]
 	public static extern Vector3 FosterAudioListenerGetPosition(int index);
 	[DllImport(DLL)]
@@ -102,9 +115,9 @@ internal static class Platform
 	[DllImport(DLL)]
 	public static extern void FosterSoundSetPan(IntPtr sound, float value);
 	[DllImport(DLL)]
-	public static extern bool FosterSoundGetPlaying(IntPtr sound);
+	public static extern FosterBool FosterSoundGetPlaying(IntPtr sound);
 	[DllImport(DLL)]
-	public static extern bool FosterSoundGetFinished(IntPtr sound);
+	public static extern FosterBool FosterSoundGetFinished(IntPtr sound);
 	[DllImport(DLL)]
 	public static extern void FosterSoundGetDataFormat(IntPtr sound, out AudioFormat format, out int channels, out int sampleRate);
 	[DllImport(DLL)]
@@ -114,9 +127,9 @@ internal static class Platform
 	[DllImport(DLL)]
 	public static extern void FosterSoundSetCursorPcmFrames(IntPtr sound, ulong value);
 	[DllImport(DLL)]
-	public static extern bool FosterSoundGetLooping(IntPtr sound);
+	public static extern FosterBool FosterSoundGetLooping(IntPtr sound);
 	[DllImport(DLL)]
-	public static extern void FosterSoundSetLooping(IntPtr sound, bool value);
+	public static extern void FosterSoundSetLooping(IntPtr sound, FosterBool value);
 	[DllImport(DLL)]
 	public static extern ulong FosterSoundGetLoopBeginPcmFrames(IntPtr sound);
 	[DllImport(DLL)]
@@ -126,9 +139,9 @@ internal static class Platform
 	[DllImport(DLL)]
 	public static extern void FosterSoundSetLoopEndPcmFrames(IntPtr sound, ulong value);
 	[DllImport(DLL)]
-	public static extern bool FosterSoundGetSpatialized(IntPtr sound);
+	public static extern FosterBool FosterSoundGetSpatialized(IntPtr sound);
 	[DllImport(DLL)]
-	public static extern void FosterSoundSetSpatialized(IntPtr sound, bool value);
+	public static extern void FosterSoundSetSpatialized(IntPtr sound, FosterBool value);
 	[DllImport(DLL)]
 	public static extern Vector3 FosterSoundGetPosition(IntPtr sound);
 	[DllImport(DLL)]

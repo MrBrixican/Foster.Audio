@@ -7,7 +7,7 @@
 // foster global state
 typedef struct
 {
-	bool running;
+	FosterBool running;
 	FosterDesc desc;
 	ma_engine* audioEngine;
 } FosterState;

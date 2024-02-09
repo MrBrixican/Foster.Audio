@@ -131,7 +131,7 @@ public readonly struct SoundInstance
 	public bool Looping
 	{
 		get => GetPlatform(Platform.FosterSoundGetLooping);
-		set => SetPlatform(value, Platform.FosterSoundSetLooping);
+		set => SetPlatform<Platform.FosterBool>(value, Platform.FosterSoundSetLooping);
 	}
 
 	/// <summary>
@@ -195,7 +195,7 @@ public readonly struct SoundInstance
 	public bool Spatialized
 	{
 		get => GetPlatform(Platform.FosterSoundGetSpatialized);
-		set => SetPlatform(value, Platform.FosterSoundSetSpatialized);
+		set => SetPlatform<Platform.FosterBool>(value, Platform.FosterSoundSetSpatialized);
 	}
 
 	/// <summary>

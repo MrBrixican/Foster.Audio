@@ -16,6 +16,8 @@
 	#define FOSTER_CALL
 #endif
 
+typedef uint8_t FosterBool;
+
 typedef enum FosterLogging
 {
 	FOSTER_LOGGING_DEFAULT,
@@ -110,9 +112,9 @@ FOSTER_API void FosterAudioRegisterDecodedData(const char* name, const void* dat
 
 FOSTER_API void FosterAudioUnregisterData(const char* name);
 
-FOSTER_API bool FosterAudioListenerGetEnabled(int index);
+FOSTER_API FosterBool FosterAudioListenerGetEnabled(int index);
 
-FOSTER_API void FosterAudioListenerSetEnabled(int index, bool value);
+FOSTER_API void FosterAudioListenerSetEnabled(int index, FosterBool value);
 
 FOSTER_API Vector3 FosterAudioListenerGetPosition(int index);
 
@@ -154,9 +156,9 @@ FOSTER_API float FosterSoundGetPan(FosterSound* sound);
 
 FOSTER_API void FosterSoundSetPan(FosterSound* sound, float value);
 
-FOSTER_API bool FosterSoundGetPlaying(FosterSound* sound);
+FOSTER_API FosterBool FosterSoundGetPlaying(FosterSound* sound);
 
-FOSTER_API bool FosterSoundGetFinished(FosterSound* sound);
+FOSTER_API FosterBool FosterSoundGetFinished(FosterSound* sound);
 
 FOSTER_API void FosterSoundGetDataFormat(FosterSound* sound, FosterAudioFormat* format, int* channels, int* sampleRate);
 
@@ -166,9 +168,9 @@ FOSTER_API uint64_t FosterSoundGetCursorPcmFrames(FosterSound* sound);
 
 FOSTER_API void FosterSoundSetCursorPcmFrames(FosterSound* sound, uint64_t value);
 
-FOSTER_API bool FosterSoundGetLooping(FosterSound* sound);
+FOSTER_API FosterBool FosterSoundGetLooping(FosterSound* sound);
 
-FOSTER_API void FosterSoundSetLooping(FosterSound* sound, bool value);
+FOSTER_API void FosterSoundSetLooping(FosterSound* sound, FosterBool value);
 
 FOSTER_API uint64_t FosterSoundGetLoopBeginPcmFrames(FosterSound* sound);
 
@@ -178,9 +180,9 @@ FOSTER_API uint64_t FosterSoundGetLoopEndPcmFrames(FosterSound* sound);
 
 FOSTER_API void FosterSoundSetLoopEndPcmFrames(FosterSound* sound, uint64_t value);
 
-FOSTER_API bool FosterSoundGetSpatialized(FosterSound* sound);
+FOSTER_API FosterBool FosterSoundGetSpatialized(FosterSound* sound);
 
-FOSTER_API void FosterSoundSetSpatialized(FosterSound* sound, bool value);
+FOSTER_API void FosterSoundSetSpatialized(FosterSound* sound, FosterBool value);
 
 FOSTER_API Vector3 FosterSoundGetPosition(FosterSound* sound);
 
