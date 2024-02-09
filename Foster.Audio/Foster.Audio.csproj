@@ -32,8 +32,20 @@
       <Link>FosterAudioPlatform.dll</Link>
     </Content>
     <Content Include="$(NativeLibsDir)lib64\libFosterAudioPlatform.so">
-      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Linux'))">PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64'">PreserveNewest</CopyToOutputDirectory>
       <PackagePath>runtimes\linux-x64\native</PackagePath>
+      <Pack>True</Pack>
+      <Link>libFosterAudioPlatform.so</Link>
+    </Content>
+    <Content Include="$(NativeLibsDir)libarm64\libFosterAudioPlatform.so">
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>runtimes\linux-arm64\native</PackagePath>
+      <Pack>True</Pack>
+      <Link>libFosterAudioPlatform.so</Link>
+    </Content>
+    <Content Include="$(NativeLibsDir)libarm\libFosterAudioPlatform.so">
+      <CopyToOutputDirectory Condition="$([MSBuild]::IsOSPlatform('Linux')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm'">PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>runtimes\linux-arm\native</PackagePath>
       <Pack>True</Pack>
       <Link>libFosterAudioPlatform.so</Link>
     </Content>

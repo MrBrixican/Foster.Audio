@@ -29,27 +29,22 @@ target_include_directories(${TARGET_NAME}
 	PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
-# ignore some particularly annoying warnings from our third party libraries
-if(MSVC)
-	# possible loss of data
-	add_definitions("/wd4244 /wd4267")
-	# truncation
-	add_definitions("/wd4305")
-	# signed/unsigned mismatch
-	add_definitions("/wd4018")
-endif()
+# miniaudio dependencies
+# windows: none
+# mac: none
+# linux: pthreads, libm, libdl
+# bsd: pthreads, libm
 
-file(GLOB_RECURSE TP_DIR "src/third_party/*.c" "src/third_party/*.h")
-
-message(${TP_DIR})
-
-set_source_files_properties(
-	${TP_DIR}
-	PROPERTIES
-    COMPILE_FLAGS
-    "-Wno-everything"
-)
-#add_definitions(-w)
+if (UNIX AND NOT APPLE)
+   set(THREADS_PREFER_PTHREAD_FLAG ON)
+   find_package(Threads REQUIRED)
+   find_library(LIB_M m)
+   if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+       find_library(LIB_DL dl)
+       target_link_libraries(${TARGET_NAME} PRIVATE ${LIB_DL})
+   endif ()
+   target_link_libraries(${TARGET_NAME} PRIVATE Threads::Threads ${LIB_M})
+endif ()
 
 # Get platform target
 if (APPLE)
@@ -57,7 +52,15 @@ if (APPLE)
 elseif (WIN32)
 	set(FosterTarget x64)
 elseif (UNIX)
-	set(FosterTarget lib64)
+	if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+		set(FosterTarget libarm64)
+	elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "armv7l")
+		set(FosterTarget libarm)
+	elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "armv6l")
+		set(FosterTarget libarm)
+	else()
+		set(FosterTarget lib64)
+	endif()
 else()
 	message(FATAL_ERROR "Unknown Target!")
 endif()
@@ -79,18 +82,17 @@ if (MSVC)
 
     # Warnings as Errors Enabled
     target_compile_options(${TARGET_NAME} PRIVATE /WX)
+
+	# ignore some particularly annoying warnings from our third party libraries:
+	# possible loss of data
+	add_definitions("/wd4244 /wd4267")
+	# truncation
+	add_definitions("/wd4305")
+	# signed/unsigned mismatch
+	add_definitions("/wd4018")
 endif()
 
 if(WIN32)
     target_compile_definitions(${TARGET_NAME} PRIVATE _UNICODE UNICODE _CRT_SECURE_NO_WARNINGS)
     target_compile_definitions(${TARGET_NAME} PRIVATE NOMINMAX)
 endif ()
-
-# tracks which libraries we need to link, depends on Options above
-set(LIBS "")
-
-# Tell SDL it's going to be a shared lib
-set_property(TARGET ${FOSTER_SDL2_LIBS} PROPERTY POSITION_INDEPENDENT_CODE ON)
-
-# Link SDL
-target_link_libraries(${TARGET_NAME} PRIVATE ${LIBS})
