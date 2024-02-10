@@ -14,7 +14,7 @@ _★ very work in progress! likely to have frequent, breaking changes! please us
 ### Audio
  - Implemented via [miniaudio](https://github.com/mackron/miniaudio) for Linux/Mac/Windows.
  - Supported features
-   - Loading WAV, MP3, QOA, OGG, and raw PCM data
+   - Loading WAV, MP3, FLAC, QOA, OGG, and raw PCM data
    - Essential operations/settings: Play, Pause, Stop, Seek, Volume, Pitch, Pan, Looping, Spatialization
    - Sound groups to manage multiple sound instances (useful for sound category volume management)
    - Garbage free managed sound instances
