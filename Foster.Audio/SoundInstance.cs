@@ -341,7 +341,7 @@ public readonly struct SoundInstance
 	}
 
 	/// <summary>
-	/// When true, this instance will not be automatically released once <see cref="Finished"/> is true or when <see cref="Stop"/> is called
+	/// When true, this instance will not be automatically released once <see cref="Finished"/> is true or when <see cref="Stop"/> is called.
 	/// </summary>
 	public bool Protected
 	{
@@ -448,7 +448,7 @@ public readonly struct SoundInstance
 	}
 
 	/// <summary>
-	/// Releases this instance, making it inactive and freeing memory in the process
+	/// Releases this instance, making it inactive and freeing memory in the process.
 	/// </summary>
 	public void Release()
 	{
@@ -473,7 +473,7 @@ public readonly struct SoundInstance
 	}
 
 	/// <summary>
-	/// Plays the instance
+	/// Plays the instance.
 	/// </summary>
 	public void Play()
 	{
@@ -484,7 +484,7 @@ public readonly struct SoundInstance
 	}
 
 	/// <summary>
-	/// Pauses the instance
+	/// Pauses the instance.
 	/// </summary>
 	public void Pause()
 	{

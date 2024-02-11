@@ -89,6 +89,9 @@ public static class Audio
 		}
 	}
 
+	/// <summary>
+	/// Initializes Audio. Call once on startup.
+	/// </summary>
 	public static void Startup()
 	{
 		Platform.FosterAudioStartup(new());
@@ -101,6 +104,9 @@ public static class Audio
 		Listener = Listeners[0];
 	}
 
+	/// <summary>
+	/// Runs sound instance management. Call once per frame/update.
+	/// </summary>
 	public static void Update()
 	{
 		// Go through all instances and destroy all that are non-protected, finished
@@ -125,6 +131,9 @@ public static class Audio
 		}
 	}
 
+	/// <summary>
+	/// Deinitializes and cleans up Audio. Call once on shutdown.
+	/// </summary>
 	public static void Shutdown()
 	{
 		ReleaseAll();
