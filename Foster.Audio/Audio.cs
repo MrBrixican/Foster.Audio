@@ -78,6 +78,10 @@ public static class Audio
 
 	public static void ReleaseAll() => ApplyAll(m => m.Release());
 
+	/// <summary>
+	/// Applies an action to all active instances.
+	/// </summary>
+	/// <param name="action"></param>
 	public static void ApplyAll(Action<SoundInstance> action)
 	{
 		foreach (var instance in Instances)
